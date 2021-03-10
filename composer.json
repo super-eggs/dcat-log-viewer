@@ -1,0 +1,32 @@
+{
+    "name": "super-eggs/dcat-log-viewer",
+    "alias": "系统日志",
+    "description": "方便在管理后台查看日志",
+    "type": "library",
+    "keywords": ["dcat-admin", "extension", "logs"],
+    "homepage": "https://github.com/super-eggs/dcat-log-viewer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SuperEggs",
+            "email": "1552915523@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "dcat/laravel-admin": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SuperEggs\\Dcat\\LogViewer\\": "src/"
+        }
+    },
+    "extra": {
+        "dcat-admin": "SuperEggs\\Dcat\\LogViewer\\LogViewerServiceProvider",
+        "laravel": {
+            "providers": [
+                "SuperEggs\\Dcat\\LogViewer\\LogViewerServiceProvider"
+            ]
+        }
+    }
+}
