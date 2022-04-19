@@ -98,7 +98,10 @@ class DcatLogView
      */
     public function getLogFiles($count = 20)
     {
-        $files = glob(storage_path('logs/*'));
+        $log_file_prefix = LogViewerServiceProvider::setting('log_file_prefix', "laravel");
+
+        $files = glob(storage_path(sprintf('logs/%s*', $log_file_prefix)));
+
         $files = array_combine($files, array_map('filemtime', $files));
         arsort($files);
 
