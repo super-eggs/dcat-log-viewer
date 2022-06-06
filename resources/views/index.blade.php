@@ -1,30 +1,24 @@
 <div class="row">
-    <!-- /.col -->
     <div class="col-md-10">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <button type="button" data-action="refresh" class="btn btn-primary btn-sm log-refresh"><i
-                        class="fa fa-refresh"></i> {{ trans('admin.refresh') }}</button>
+                <button type="button" data-action="refresh" class="btn btn-primary btn-sm log-refresh">
+                    <i class="fa fa-refresh"></i> {{ trans('admin.refresh') }}
+                </button>
                 <div class="pull-right">
                     <div class="btn-group">
                         @if ($prevUrl)
-                            <a href="{{ $prevUrl }}" class="btn btn-default btn-sm"><i
-                                    class="fa fa-chevron-left"></i></a>
+                            <a href="{{ $prevUrl }}" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></a>
                         @endif
                         @if ($nextUrl)
                             <a href="{{ $nextUrl }}" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></a>
                         @endif
                     </div>
-                    <!-- /.btn-group -->
                 </div>
-                <!-- /.box-tools -->
             </div>
-            <!-- /.box-header -->
             <div class="box-body no-padding">
-
                 <div class="table-responsive">
                     <table class="table table-hover">
-
                         <thead>
                         <tr>
                             <th>级别</th>
@@ -34,58 +28,43 @@
                             <th></th>
                         </tr>
                         </thead>
-
                         <tbody>
-
                         @foreach($logs as $index => $log)
-
                             <tr>
                                 <td class="text-white">
-                                    <span
-                                        class="label bg-{{SuperEggs\Dcat\LogViewer\DcatLogView::$levelColors[$log['level']]}}">{{ $log['level'] }}</span>
+                                    <span class="label bg-{{SuperEggs\Dcat\LogViewer\DcatLogView::$levelColors[$log['level']]}}">{{ $log['level'] }}</span>
                                 </td>
                                 <td style="width: 50px"><strong>{{ $log['env'] }}</strong></td>
                                 <td style="width:120px;">{{ $log['time'] }}</td>
                                 <td><code style="word-break: break-all;">{{ $log['info'] }}</code></td>
                                 <td>
                                     @if(!empty($log['trace']))
-                                        {{--                                        <i class="fa fa-info"></i>--}}
-                                        <button class="btn btn-primary btn-xs" data-toggle="collapse"
-                                                data-target=".trace-{{$index}}"> Exception
-                                        </button>
+                                        <i class="fa fa-info"></i>
+                                        <button class="btn btn-primary btn-xs" data-toggle="collapse" data-target=".trace-{{$index}}"> Exception </button>
                                     @endif
                                 </td>
                             </tr>
-
                             @if (!empty($log['trace']))
                                 <tr class="collapse trace-{{$index}}">
                                     <td colspan="5">
-                                        <div
-                                            style="white-space: pre-wrap;background: #333;color: #fff; padding: 10px;">{{ $log['trace'] }}</div>
+                                        <div style="white-space: pre-wrap;background: #333;color: #fff; padding: 10px;">{{ $log['trace'] }}</div>
                                     </td>
                                 </tr>
                             @endif
-
                         @endforeach
-
                         </tbody>
                     </table>
-                    <!-- /.table -->
                 </div>
-                <!-- /.mail-box-messages -->
             </div>
-            <!-- /.box-body -->
         </div>
-        <!-- /. box -->
     </div>
-
     <div class="col-md-2">
         <div class="box box-solid">
             <div class="box-header with-border">
                 <h3 class="box-title">{{ \SuperEggs\Dcat\LogViewer\LogViewerServiceProvider::trans('log.file_list') }}</h3>
             </div>
             <div class="box-body no-padding">
-                <ul class="nav nav-pills nav-stacked">
+                <ul class="nav nav-pills nav-stacked" style="flex-direction: column;">
                     @foreach($logFiles as $logFile)
                         <li class="{{ $logFile === $fileName?'active':'' }}" style="margin-top: 3px">
                             <a href="{{ admin_route('log-viewer-file',['file' => $logFile]) }}">
@@ -95,9 +74,7 @@
                     @endforeach
                 </ul>
             </div>
-            <!-- /.box-body -->
         </div>
-
         <div class="box box-solid">
             <div class="box-header with-border">
                 <h3 class="box-title">{{ SuperEggs\Dcat\LogViewer\LogViewerServiceProvider::trans('log.file_info') }}</h3>
@@ -112,10 +89,6 @@
                     </li>
                 </ul>
             </div>
-            <!-- /.box-body -->
         </div>
-
-        <!-- /.box -->
     </div>
-    <!-- /.col -->
 </div>
