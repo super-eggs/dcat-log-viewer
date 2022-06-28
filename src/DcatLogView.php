@@ -35,7 +35,7 @@ class DcatLogView
         'CRITICAL' => 'maroon',
         'ERROR' => 'red',
         'WARNING' => 'orange',
-        'NOTICE' => 'light-blue',
+        'NOTICE' => 'blue',
         'INFO' => 'tear-1',
         'DEBUG' => 'green',
     ];
