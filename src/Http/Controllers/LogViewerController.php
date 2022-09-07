@@ -10,14 +10,14 @@ use SuperEggs\Dcat\LogViewer\DcatLogView;
 class LogViewerController extends Controller
 {
     /**
-     * @param  null  $file
-     * @param  Request  $request
-     * @param  Content  $content
+     * @param Request  $request
+     * @param Content  $content
+     * @param String|null $file
      * @return Content
      * @throws \Exception
      * @author guozhiyuan
      */
-    public function index($file = null, Request $request, Content $content)
+    public function index(Request $request, Content $content, string $file = null): Content
     {
         if ($file === null) {
             $file = (new DcatLogView())->getLastModifiedLog();
@@ -27,7 +27,7 @@ class LogViewerController extends Controller
         $offset = $request->get('offset');
 
         return $content
-            ->header('系统日志')
+            ->header(\SuperEggs\Dcat\LogViewer\LogViewerServiceProvider::trans('log.system_log'))
             ->description($viewer->getFilePath())
             ->body(view('super-eggs.dcat-log-viewer::index', [
                 'logs' => $viewer->fetch($offset),

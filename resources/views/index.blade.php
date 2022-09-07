@@ -21,10 +21,10 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>级别</th>
-                            <th>环境</th>
-                            <th>时间</th>
-                            <th>消息</th>
+                            <th>{{ \SuperEggs\Dcat\LogViewer\LogViewerServiceProvider::trans('log.level') }}</th>
+                            <th>{{ \SuperEggs\Dcat\LogViewer\LogViewerServiceProvider::trans('log.env') }}</th>
+                            <th>{{ \SuperEggs\Dcat\LogViewer\LogViewerServiceProvider::trans('log.date') }}</th>
+                            <th>{{ \SuperEggs\Dcat\LogViewer\LogViewerServiceProvider::trans('log.message') }}</th>
                             <th></th>
                         </tr>
                         </thead>
