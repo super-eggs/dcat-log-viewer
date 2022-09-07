@@ -27,7 +27,7 @@ class LogViewerController extends Controller
         $offset = $request->get('offset');
 
         return $content
-            ->header('系统日志')
+            ->header(\SuperEggs\Dcat\LogViewer\LogViewerServiceProvider::trans('log.system_log'))
             ->description($viewer->getFilePath())
             ->body(view('super-eggs.dcat-log-viewer::index', [
                 'logs' => $viewer->fetch($offset),
