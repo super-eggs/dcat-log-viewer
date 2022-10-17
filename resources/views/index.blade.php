@@ -68,7 +68,7 @@
                     @foreach($logFiles as $logFile)
                         <li class="{{ $logFile === $fileName?'active':'' }}" style="margin-top: 3px">
                             <a href="{{ admin_route('log-viewer-file',['file' => $logFile]) }}">
-                                <i class="fa fa-{{ ($logFile === $fileName) ? 'folder-open' : 'folder' }}"></i>{{ $logFile }}
+                                <i class="fa fa-{{ ($logFile === $fileName) ? 'folder-open' : 'folder' }}"></i> {{ $logFile }}
                             </a>
                         </li>
                     @endforeach
@@ -80,7 +80,7 @@
                 <h3 class="box-title">{{ SuperEggs\Dcat\LogViewer\LogViewerServiceProvider::trans('log.file_info') }}</h3>
             </div>
             <div class="box-body no-padding">
-                <ul class="nav nav-pills nav-stacked">
+                <ul class="nav nav-pills nav-stacked" style="flex-direction: column;">
                     <li class="mt-1">
                         <a>{{SuperEggs\Dcat\LogViewer\LogViewerServiceProvider::trans('log.size') .' : '.$size}}</a>
                     </li>
